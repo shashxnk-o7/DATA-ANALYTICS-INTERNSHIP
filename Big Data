@@ -1,0 +1,25 @@
+import dask.dataframe as dd
+import matplotlib.pyplot as plt
+
+# Load large CSV file with Dask
+df = dd.read_csv("products.csv")
+
+# Show first few rows
+print(df.head())
+
+# Check total number of rows
+print("Total rows:", df.shape[0].compute())
+
+# Count how many times each product string occurs
+product_counts = df['Products'].value_counts().compute()
+
+# Show top 10
+print(product_counts.head(10))
+
+# Plot
+product_counts.head(10).plot(kind='bar', figsize=(10,5), title='Top 10 Most Frequent Product Sets')
+plt.xlabel("Product Set")
+plt.ylabel("Count")
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
