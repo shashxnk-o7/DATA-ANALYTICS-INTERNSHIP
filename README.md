@@ -1,4 +1,4 @@
-# Sentiment-analysis-nlp
+# Data Analytics Internship
 import pandas as pd
 from textblob import TextBlob
 import matplotlib.pyplot as plt
